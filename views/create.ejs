@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Post | Hipost</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-50 flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md py-4">
+      <div class="container mx-auto px-6 flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold text-blue-600">Hipost</a>
+        <div class="space-x-6">
+          <a href="/create" class="text-blue-600 font-semibold">Create Post</a>
+           <a href="/allpostsuser" class="text-blue-600 font-semibold">All Post</a>
+          <a href="/logout" class="text-gray-700 hover:text-blue-600 font-medium">Logout</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Create Post Section -->
+    <section class="flex-grow flex flex-col items-center justify-center px-4 py-12">
+      <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-2xl border border-gray-100">
+        <!-- Hardcoded User -->
+        <div class="mb-6 text-center">
+          <h2 class="text-3xl font-bold text-blue-600 mb-2">Create a New Post</h2>
+          <p class="text-gray-600">Logged in as <span class="font-semibold text-gray-800"><%=name %></span></p>
+        </div>
+
+        <!-- Post Form -->
+        <form action="/api/post/create" method="POST" class="space-y-6">
+          <!-- Post Title -->
+          <div>
+            <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Post Title</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Enter your post title"
+              required
+              class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            />
+          </div>
+
+          <!-- Post Content -->
+          <div>
+            <label for="content" class="block text-sm font-medium text-gray-700 mb-1">Post Content</label>
+            <textarea
+              id="content"
+              name="content"
+              rows="6"
+              placeholder="Write something amazing..."
+              required
+              class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
+          >
+            Publish Post
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-200 py-6 mt-auto">
+      <div class="container mx-auto px-6 text-center">
+        <p class="text-sm">&copy; <%= new Date().getFullYear() %> Hipost. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </body>
+</html>
