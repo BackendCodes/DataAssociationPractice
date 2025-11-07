@@ -10,7 +10,7 @@ const authcheck = async (req, res, next) => {
   }
 
   try {
-    const verifytoken = jwt.verify(token, "lordsainathisgreat");
+    const verifytoken = jwt.verify(token, process.env.JWT_SECRET);
 
     const user = await userModel.findById(verifytoken.id).select("-password");
     console.log(user);

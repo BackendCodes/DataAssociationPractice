@@ -10,7 +10,7 @@ const protectroute = async (req, res, next) => {
       return res.redirect("/login");
     }
 
-    const verifytoken = jwt.verify(token, "lordsainathisgreat");
+    const verifytoken = jwt.verify(token, process.env.JWT_SECRET);
 
     if (!verifytoken) {
       return res.redirect("/login");

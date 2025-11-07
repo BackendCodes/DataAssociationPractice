@@ -28,14 +28,15 @@ const login = async (req, res) => {
       return res.redirect("/login");
     }
 
-    const token = jwt.sign({ id: existinguser._id }, "lordsainathisgreat", {
-      expiresIn: "300s",
+    const token = jwt.sign({ id: existinguser._id }, process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRE || "300s",
     });
  
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
+      secure: process.env.NODE_ENV === "production", // true in production, false in development
+      sameSite: "strict",
       maxAge: 5 * 60 * 1000, // 5 minutes
     });
 
@@ -72,14 +73,15 @@ const register = async (req, res) => {
       password: hash,
     });
 
-    const token = jwt.sign({ id: createduser._id }, "lordsainathisgreat", {
-      expiresIn: "300s",
+    const token = jwt.sign({ id: createduser._id }, process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_EXPIRE || "300s",
     });
    
 
     res.cookie("token", token, {
-      httpOnlye: true,
-      secure: false,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // true in production, false in development
+      sameSite: "strict",
       maxAge: 5 * 60 * 1000, // 5 minutes
     });
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>All Posts | Hipost</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
 
   <body class="bg-gray-50 flex flex-col min-h-screen">
@@ -12,7 +12,14 @@
     <nav class="bg-white shadow-md py-4">
       <div class="container mx-auto px-6 flex justify-between items-center">
         <a href="/" class="text-2xl font-bold text-blue-600">Hipost</a>
-        <div class="space-x-6">
+        <div class="space-x-6 flex items-center">
+          <a href="/updateimg">
+            <img
+            class="w-16 h-16 rounded-full object-cover"
+            src="/uploads/<%= profilepic %>"
+            alt=""
+          />
+          </a>
           <a
             href="/create"
             class="text-gray-700 hover:text-blue-600 font-medium"
